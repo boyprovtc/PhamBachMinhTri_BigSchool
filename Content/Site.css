@@ -22,3 +22,18 @@ select,
 textarea {
     max-width: 280px;
 }
+ .navbar-inverse{
+     background-color: aquamarine;
+     border-color:black;
+ }
+
+ .navbar-inverse .navbar-nav > li > a {
+     color: darkred;
+ }
+ .navbar-inverse .navbar-brand{
+     color:wheat;
+ }
+ .row h3 {
+     font-family: 'Times New Roman';
+     font-size: 40px;
+ }
