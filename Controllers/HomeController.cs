@@ -19,8 +19,11 @@ namespace BigSchools.Controllers
             {
                 ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(i.LectureId);
                 i.LectureId = user.Name;
+                
             }
-
+            //var CateName = from Name in Category
+            //               where Name.Id = i.CategoryId
+            //               select Name;
             return View(upcommingCourse);
         }
 

@@ -1,28 +1,56 @@
-﻿@{
+﻿@model IEnumerable<BigSchools.Models.Course>
+
+@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/Site.css")
-    @Scripts.Render("~/bundles/modernizr")
 
-</head>
-<body>
-    <div class="row">
-        <h3>
-            <ul>
-                @foreach (var course in Model)
-                {
-                    <li>
-                        @course.DateTime.ToString("dd/MM/yyyy HH:mm") - @course.LectureId
-                    </li>
-                }
-            </ul>
-        </h3>
 
-    </div>
-</body>
-</html>
+
+<div class="row">
+    <ul class="course">
+        @foreach (var course in Model)
+        {
+            <li>
+                <div class="date">
+                    <div class="month">
+                        @course.DateTime.ToString("MM")
+                    </div>
+                    <div class="day">
+                        @course.DateTime.ToString("dd")
+                    </div>
+                </div>
+                <div class="details">
+                    <span class="lecture">
+                        @course.LectureId
+                    </span>
+                    <span class="category">
+                        @course.CategoryID
+                    </span>
+                </div>
+            </li>
+        }
+    </ul>
+    @section scripts{
+        <script>
+            $(document).ready(function () {
+                $(".js-tongle-attendance").click(function (e) {
+                    var button = $(e.target);
+                    $.post("/api/attendances", { Id: button.attr("data-course-id") })
+                        .done(function () {
+                            alert("Resigter courrse sucessfully!")
+                            button
+                                .removeClass("btn-default")
+                                .addClass("bth-info")
+                                .text("Going");
+                        }).fail(function () {
+                            alert("something failed");
+                        });
+
+                });
+            });
+
+        </script>
+        
+        }
+</div>
