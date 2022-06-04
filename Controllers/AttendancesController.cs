@@ -9,6 +9,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
+
 namespace BigSchools.Controllers
 {
    
@@ -17,9 +18,9 @@ namespace BigSchools.Controllers
         [HttpPost]
         public IHttpActionResult Attend(Course attendanceDto)
         {
-            var UserID = User.Identity.GetUserId();
+            var userID = User.Identity.GetUserId();
             BigSchoolContext context = new BigSchoolContext();
-            if (context.Attendances.Any(p => p.Attendee == UserID && p.CourseID == attendanceDto.Id))
+            if (context.Attendances.Any(p => p.Attendee == userID && p.CourseID == attendanceDto.Id))
             {
                 return BadRequest("The Attendance already exists ! ");
             }

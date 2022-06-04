@@ -6,32 +6,35 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    //[Table("Attendance")]
-    //public partial class Attendance
-    //{
-    //    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    //    public Attendance()
-    //    {
-    //        Courses = new HashSet<Course>();
-
-    //    }
-
-    //    public int CourseID { get; set; }
-
-    //    public string Attendee { get; set; }
-
-
-
-    //    public virtual ICollection<Course> Courses { get; set; }
-
-    //}
-    internal class Attendance
+    [Table("Attendance")]
+    public partial class Attendance
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Attendance()
         {
+            Courses = new HashSet<Course>();
+            Categories = new HashSet<Category>();
         }
 
         public int CourseID { get; set; }
+
         public string Attendee { get; set; }
+
+
+
+        public virtual ICollection<Course> Courses { get; set; }
+
+        public virtual ICollection<Category> Categories { get; set; }
+
     }
+    //internal class Attendance
+    //{
+    //    [Table("Attendance")]
+    //    public Attendance()
+    //    {
+    //    }
+
+    //    public int CourseID { get; set; }
+    //    public string Attendee { get; set; }
+    //}
 }
