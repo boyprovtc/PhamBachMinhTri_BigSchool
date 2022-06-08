@@ -1,10 +1,11 @@
 ﻿@model IEnumerable<BigSchools.Models.Course>
 
 @{
-    ViewBag.Title = "Attending";
+    ViewBag.Title = "LectureIamGoing";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2>LectureIamGoing</h2>
 
 <div class="row">
     <ul class="course">
@@ -21,13 +22,14 @@
                 </div>
                 <div class="details">
                     <span class="lecture">
-                        @course.Name - @course.Place
+                        @course.LecturesName - @course.Place
                     </span>
+                    <br />
                     <span class="category">
                         @course.Category.Name
                     </span>
-                    <button data-course-id="@course.Id" class="btn btn-default btn-sm js-tongle-attendance">Going?</button>
                 </div>
+
             </li>
         }
     </ul>

@@ -4,8 +4,7 @@
     ViewBag.Title = "Mine";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@foreach (var item in Model)
-{
+<div class="row">
     <ul class="course">
         @foreach (var course in Model)
         {
@@ -20,8 +19,9 @@
                 </div>
                 <div class="details">
                     <span class="lecture">
-                        @course.LectureId
+                        @course.Name
                     </span>
+                    <br />
                     <span class="category">
                         @course.Category.Name
                     </span>
@@ -33,4 +33,4 @@
             </li>
         }
     </ul>
-}
+</div>
