@@ -80,7 +80,7 @@ namespace BigSchools.Controllers
             foreach (Course i in Courses)
             {
                 
-                i.LectureId = currentUser.Name;
+                i.LecturesName = currentUser.Name;
 
             }
 
@@ -110,9 +110,17 @@ namespace BigSchools.Controllers
                         Courses.Add(objectCourse);
                     }
                 }
-            } return View(Courses);
+            } 
+            return View(Courses);
         }
-
+        public ActionResult Delete(int Id)
+        {
+            BigSchoolContext context = new BigSchoolContext();
+            var course = context.Courses.Find(Id);
+            context.Courses.Remove(course);
+            context.SaveChanges();
+            return RedirectToAction("Mine");
+        }
     }
 }
 

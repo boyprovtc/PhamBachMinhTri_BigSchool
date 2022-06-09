@@ -26,12 +26,11 @@ namespace BigSchools.Controllers
                     i.isLogin = true;
                     Attendance find = context.Attendances.FirstOrDefault(p => p.CourseId == i.Id && p.Attendee == userID);
                     if(find == null)
-                    {
                         i.isShowGoing = true;
                         Following findfollow = context.Followings.FirstOrDefault(p => p.FollowerId == userID && p.FolloweeId == i.LectureId);
-                        if(findfollow == null)
-                            i.isShowFollow = true;
-                    }
+                    if(findfollow == null)
+                        i.isShowFollow = true;
+                    
                 }
 
 

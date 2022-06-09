@@ -19,7 +19,7 @@
                 </div>
                 <div class="details">
                     <span class="lecture">
-                        @course.LectureId
+                        @course.LecturesName
                     </span>
                     <br />
                     <span class="category">
@@ -28,7 +28,7 @@
                 </div>
                 <div class="action">
                     <a href="">Edit</a>
-                    <a href="">Delete</a>
+                    <a href="~/Course/Delete?id=@course.Id">Delete</a>
                 </div>
             </li>
         }

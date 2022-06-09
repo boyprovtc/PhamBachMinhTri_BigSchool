@@ -29,7 +29,7 @@ namespace BigSchools.Controllers
                // return BadRequest("The already following exists ! ");
                context.Followings.Remove(context.Followings.SingleOrDefault(p => p.FollowerId == userID && p.FolloweeId == follow.FolloweeId));
                 context.SaveChanges();
-                return Ok("Cancel");
+                return Ok("cancel");
 
             }
 
@@ -37,6 +37,8 @@ namespace BigSchools.Controllers
             follow.FollowerId = userID;
             context.Followings.Add(follow);
             context.SaveChanges();
+
+
             return Ok();
             }
         }

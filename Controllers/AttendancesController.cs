@@ -24,7 +24,8 @@ namespace BigSchools.Controllers
             {
               //  return BadRequest("The Attendance already exists ! ");
               context.Attendances.Remove(context.Attendances.SingleOrDefault(p=>p.Attendee == userID && p.CourseId ==attendanceDto.Id));
-                return Ok("Cancel");
+                context.SaveChanges();
+                return Ok("cancel");
             }
 
             var attendance = new Attendance() { CourseId = attendanceDto.Id, Attendee = User.Identity.GetUserId() };

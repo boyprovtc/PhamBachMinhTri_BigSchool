@@ -29,10 +29,7 @@ namespace BigSchools.Models
 
         public int CategoryID { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Attendance> Attendance { get; set; }
-
-        public virtual Category Category { get; set; }
+      
         public List<Category> Listcategory = new List<Category>();
         public string Name;
         public string LecturesName;
@@ -40,5 +37,15 @@ namespace BigSchools.Models
         public bool isLogin = false;
         public bool isShowGoing = false;
         public bool isShowFollow = false;
+
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Attendance> Attendance { get; set; }
+
+        public virtual Category Category { get; set; }
+
+
+
+
     }
 }
