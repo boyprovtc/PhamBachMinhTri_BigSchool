@@ -91,6 +91,7 @@
                     $.post("/api/following", { FolloweeID: button.attr("data-user-id") })
                         .done(function ( result) {
                             if (result == "Cancel") {
+                                alert("Unfollow successfully !")
                                 $('.js-tongle-follow').each(function (i, obj) {
                                     if ($(this).attr('data-user-id') == followee) {
                                         $(this).removeClass("btn-success")
@@ -100,6 +101,7 @@
                                 });
                                 alert("Unfollow successfully !")
                             } else {
+                                alert("Follow successfully !")
                                 $('.js-tongle-follow').each(function (i, obj) {
                                     if ($(this).attr('data-user-id') == followee) {
                                         $(this).removeClass("btn-default")
@@ -107,7 +109,7 @@
                                             .text("Following");
                                     }
                                 });
-                                alert("Follow successfully !")
+                                
                             }
                         }).fail(function () {
                             alert("something failed");
