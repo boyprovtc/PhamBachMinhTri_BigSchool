@@ -113,13 +113,25 @@ namespace BigSchools.Controllers
             } 
             return View(Courses);
         }
-        public ActionResult Delete(int Id)
+        public ActionResult Delete(Course objCourse)
         {
+            // BigSchoolContext context = new BigSchoolContext();
+            //var course = context.Courses.Find(Id.Id);
+            // context.Courses.Remove(course);
+            // context.SaveChanges();
+            // return View("Mine");
+
             BigSchoolContext context = new BigSchoolContext();
-            var course = context.Courses.Find(Id);
-            context.Courses.Remove(course);
+
+           
+
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            objCourse.LectureId = user.Id;
+
+            context.Courses.Add(objCourse);
             context.SaveChanges();
-            return RedirectToAction("Mine");
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }
